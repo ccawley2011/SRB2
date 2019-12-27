@@ -160,8 +160,6 @@ extern void (*spanfuncs_npo2[SPANDRAWFUNC_MAX])(void);
 // CPUID
 // -----
 extern boolean R_ASM;
-extern boolean R_486;
-extern boolean R_586;
 extern boolean R_MMX;
 extern boolean R_3DNow;
 extern boolean R_MMXExt;

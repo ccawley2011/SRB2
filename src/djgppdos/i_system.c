@@ -1739,28 +1739,13 @@ const CPUInfoFlags *I_CPUInfo(void)
 	memset(&DOS_CPUInfo,0,sizeof (DOS_CPUInfo));
 #if ALLEGRO_VERSION == 3
 	if (!cpu_cpuid) return NULL;
-	DOS_CPUInfo.CPUID       = true;
 	DOS_CPUInfo.MMX         = cpu_mmx;
 	DOS_CPUInfo.AMD3DNow    = cpu_3dnow;
 #else
-	DOS_CPUInfo.CPUID       = ((cpu_capabilities&CPU_ID)       ==       CPU_ID);
-	DOS_CPUInfo.FPU         = ((cpu_capabilities&CPU_FPU)      ==      CPU_FPU);
-#ifdef CPU_IA64
-	DOS_CPUInfo.IA64        = ((cpu_capabilities&CPU_IA64)     ==     CPU_IA64);
-#endif
-#ifdef CPU_AMD64
-	DOS_CPUInfo.AMD64       = ((cpu_capabilities&CPU_AMD64)    ==    CPU_AMD64);
-#endif
 	DOS_CPUInfo.MMX         = ((cpu_capabilities&CPU_MMX)      ==      CPU_MMX);
 	DOS_CPUInfo.MMXExt      = ((cpu_capabilities&CPU_MMXPLUS)  ==  CPU_MMXPLUS);
-	DOS_CPUInfo.SSE         = ((cpu_capabilities&CPU_SSE)      ==      CPU_SSE);
 	DOS_CPUInfo.SSE2        = ((cpu_capabilities&CPU_SSE2)     ==     CPU_SSE2);
-#ifdef CPU_SEE3
-	DOS_CPUInfo.SSE3        = ((cpu_capabilities&CPU_SSE3)     ==     CPU_SSE3);
-#endif
 	DOS_CPUInfo.AMD3DNow    = ((cpu_capabilities&CPU_3DNOW)    ==    CPU_3DNOW);
-	DOS_CPUInfo.AMD3DNowExt = ((cpu_capabilities&CPU_ENH3DNOW) == CPU_ENH3DNOW);
-	DOS_CPUInfo.CMOV        = ((cpu_capabilities&CPU_CMOV)     ==     CPU_CMOV);
 #endif
 	return &DOS_CPUInfo;
 }
